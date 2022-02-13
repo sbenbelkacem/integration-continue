@@ -1,4 +1,4 @@
-node("master"){
+node{
 
     stage("test"){
         println "ahmed joe"
