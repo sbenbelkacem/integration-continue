@@ -1,7 +1,7 @@
-node{
+node("slave-ic"){
 
-    stage("test"){
-        println "ahmed joe"
+    stage("checkout-catalog"){
+        checkout([$class: 'GitSCM', branches: [[name: '*/develop']], extensions: [], userRemoteConfigs: [[url: 'https://github.com/sbenbelkacem/catalog']]])
     }
 
 }
