@@ -9,4 +9,12 @@ node("slave-ic"){
         sh "./mvnw clean package -DskipTests"
     }
 
+    stage("Analyse qualité"){
+        sh "./mvnw sonar:sonar \\\n" +
+                "  -Dsonar.projectKey=catalog \\\n" +
+                "  -Dsonar.host.url=http://54.234.48.131:11001 \\\n" +
+                "  -Dsonar.login=1b57cda1577afe576013077f1c941c934f70d52a"
+
+    }
+
 }
