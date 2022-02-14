@@ -18,4 +18,9 @@ services:
     image: sonarqube:7.8-community
     ports:
       - "11001:9000"
+  registry:
+   container_name: registry
+   image: registry
+   ports:
+     - "5000:5000"
 
