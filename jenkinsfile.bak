@@ -1,0 +1,7 @@
+node("slave-ic"){
+	
+	stage("checkout-integration-continu"){
+		checkout([$class: 'GitSCM', branches: [[name: '*/develop']], extensions: [], userRemoteConfigs: [[url: 'git@github.com:sbenbelkacem/integration-continue.git']]])
+	}
+
+}

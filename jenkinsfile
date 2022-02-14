@@ -1,0 +1,12 @@
+node("slave-ic"){
+	
+	stage("checkout-integration-continu"){
+		checkout([$class: 'GitSCM', branches: [[name: '*/develop']], extensions: [], userRemoteConfigs: [[url: 'git@github.com:sbenbelkacem/integration-continue.git']]])
+	}
+	
+	stage("deploy"){
+		sh "sudo docker-compose down"
+		sh "sudo docker-compose up -d --build"
+	}
+
+}
