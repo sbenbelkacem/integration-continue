@@ -23,4 +23,23 @@ services:
    image: registry
    ports:
      - "5000:5000"
+  keycloak:
+    image: jboss/keycloak
+    container_name: keycloak
+    ports:
+      - "8074:8080"
+    environment:
+      - KEYCLOAK_USER=admin
+      - KEYCLOAK_PASSWORD=admin
+      - TZ=Europe/Paris
+      - KEYCLOAK_IMPORT=/import/ecom.json
+    volumes:
+      - ./realms/ecom.json:/import/ecom.json
+  fake-smtp:
+    image: munkyboy/fakesmtp
+    container_name: fake-smtp
+    ports:
+      - "25:25"
+    volumes:
+      - ./mail:/var/mail
 
